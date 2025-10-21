@@ -18,9 +18,29 @@ Great news! The following variables are already set by the Vercel/Supabase integ
 
 ## 📝 Variables You Need to Add Manually
 
-Go to your Vercel Dashboard → Project Settings → Environment Variables and add ONLY these:
+Go to your Vercel Dashboard → Project Settings → Environment Variables and add these:
 
-### 1. Domain Configuration (Required)
+### 1. DATABASE_URL (Required)
+```
+DATABASE_URL
+```
+**Value:** Copy the exact value from `POSTGRES_PRISMA_URL`
+- Find `POSTGRES_PRISMA_URL` in your environment variables
+- Click the eye icon 👁️ to reveal the value
+- Copy the entire connection string
+- Create new variable `DATABASE_URL` and paste it
+
+### 2. DIRECT_URL (Required)
+```
+DIRECT_URL
+```
+**Value:** Copy the exact value from `POSTGRES_URL_NON_POOLING`
+- Find `POSTGRES_URL_NON_POOLING` in your environment variables
+- Click the eye icon 👁️ to reveal the value
+- Copy the entire connection string
+- Create new variable `DIRECT_URL` and paste it
+
+### 3. Domain Configuration (Required)
 ```
 NEXT_PUBLIC_DOMAIN
 ```
@@ -29,13 +49,14 @@ NEXT_PUBLIC_DOMAIN
 https://your-project-name.vercel.app
 ```
 
-### 2. Stripe Configuration (Required for payments)
+### 4. Stripe Secret Key (Required for payments)
 ```
 STRIPE_SECRET_KEY
 ```
 **Value:** Your Stripe secret key (starts with `sk_live_` or `sk_test_`)
 **Where to find:** Stripe Dashboard → Developers → API Keys
 
+### 5. Stripe Publishable Key (Required for payments)
 ```
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 ```
@@ -46,12 +67,26 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 
 ## 🎉 Summary
 
-You only need to add **3 variables manually**:
-1. ✅ `NEXT_PUBLIC_DOMAIN` - Your Vercel URL
-2. ✅ `STRIPE_SECRET_KEY` - Your Stripe secret key
-3. ✅ `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Your Stripe publishable key
+You need to add **5 variables manually**:
+1. ✅ `DATABASE_URL` - Set to the value of `POSTGRES_PRISMA_URL` (see below)
+2. ✅ `DIRECT_URL` - Set to the value of `POSTGRES_URL_NON_POOLING` (see below)
+3. ✅ `NEXT_PUBLIC_DOMAIN` - Your Vercel URL
+4. ✅ `STRIPE_SECRET_KEY` - Your Stripe secret key
+5. ✅ `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Your Stripe publishable key
 
-**Everything else is already configured by the Vercel/Supabase integration!**
+### How to Set DATABASE_URL and DIRECT_URL:
+
+Since Vercel provides `POSTGRES_PRISMA_URL` and `POSTGRES_URL_NON_POOLING`, you need to create aliases:
+
+1. In Vercel Environment Variables, add:
+   - **Key:** `DATABASE_URL`
+   - **Value:** Copy the value from `POSTGRES_PRISMA_URL` (click the eye icon to reveal it)
+   
+2. Add another variable:
+   - **Key:** `DIRECT_URL`
+   - **Value:** Copy the value from `POSTGRES_URL_NON_POOLING` (click the eye icon to reveal it)
+
+**Tip:** You can also use Vercel CLI to reference existing variables, but copying the values is simpler.
 
 ---
 
