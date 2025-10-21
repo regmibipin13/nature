@@ -12,8 +12,13 @@ export function createClient() {
   );
 }
 
-// For backwards compatibility, export a getter function
-export const getSupabaseClient = () => createClient();
-
-// Deprecated: Use createClient() instead
-export const supabaseClient = createClient();
+// For backwards compatibility - lazy initialization
+let _supabaseClient: ReturnType<typeof createClient> | null = null;
+export const supabaseClient = new Proxy({} as ReturnType<typeof createClient>, {
+  get(target, prop) {
+    if (!_supabaseClient) {
+      _supabaseClient = createClient();
+    }
+    return (_supabaseClient as any)[prop];
+  }
+});
