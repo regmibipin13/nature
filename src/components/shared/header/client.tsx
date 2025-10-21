@@ -36,7 +36,7 @@ export function HeaderClient({
 
   return (
     <header className="w-full border-b bg-white">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-6">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-2 md:py-6">
         <div className="flex items-center space-x-6">
           {/* Logo */}
           <Link href="/">
