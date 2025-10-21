@@ -1,0 +1,23 @@
+{
+  "headline_part1": "Clean, Conscious,",
+  "headline_part2": "Performance",
+  "headline_part3_italic": "Skincare.",
+  "imageUrl": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=1887&auto=format&fit=crop",
+  "accordionItems": [
+    {
+      "id": 1,
+      "title": "RADICAL TRANSPARENCY",
+      "content": "NO BLACK BOXES, NOTHING TO HIDE. WE DISCLOSE OUR FULL FORMULAS, SO YOU WILL NEVER HAVE TO GUESS WHAT'S IN IT AND HOW MUCH."
+    },
+    {
+      "id": 2,
+      "title": "CLEAN, BEYOND REPROACH",
+      "content": "Our commitment to clean beauty goes beyond typical standards. We meticulously source ingredients and formulate products that are safe, non-toxic, and free from harmful chemicals."
+    },
+    {
+      "id": 3,
+      "title": "CONSCIOUS & RESPONSIBLE",
+      "content": "WE ARE COMMITTED TO USING ONLY THE SAFEST, MOST EFFECTIVE INGREDIENTS, AND WE NEVER COMPROMISE ON QUALITY."
+    }
+  ]
+}
