@@ -6,10 +6,14 @@ export async function middleware(request: NextRequest) {
   // update session (refresh cookies etc.)
   const response = await updateSession(request);
 
+  // Support both naming conventions (Vercel integration and manual setup)
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL!;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY!;
+
   // create Supabase client bound to request/response cookies
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         get: (name) => request.cookies.get(name)?.value,
